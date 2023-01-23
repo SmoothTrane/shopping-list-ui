@@ -10,10 +10,22 @@ import Garbage from "./icons/Garbage";
 import Edit from "./icons/Edit";
 import EditDrawer from "./EditDrawer";
 
-export default function Item({ item, fetchItems }) {
+interface Item {
+  name: string;
+  description: string;
+  _id: string;
+  quantity: number;
+  isPurchased: boolean;
+}
+interface ItemProps {
+  item: Item;
+  fetchItems: () => void;
+}
+
+export default function Item({ item, fetchItems }: ItemProps) {
   const [drawer, setDrawer] = useState(false);
   const [modal, setModal] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(item.isPurchased);
 
   const removeItem = () => {
     axios
@@ -39,7 +51,7 @@ export default function Item({ item, fetchItems }) {
   return (
     <>
       <Box
-        className={selected ? "highlighted-item" : ""}
+        className={selected || item.isPurchased ? "highlighted-item" : ""}
         id={item._id}
         sx={{
           width: "100%",
@@ -57,10 +69,18 @@ export default function Item({ item, fetchItems }) {
             onChange={handleCheck}
           ></Checkbox>
           <Box sx={{ display: "flex", width: "100%", flexDirection: "column" }}>
-            <span className={selected ? "strike highlight-text" : "highlight"}>
+            <span
+              className={
+                selected || item.isPurchased
+                  ? "strike highlight-text"
+                  : "highlight"
+              }
+            >
               {item.name}
             </span>
-            <span className={selected ? "strike" : ""}>{item.description}</span>
+            <span className={selected || item.isPurchased ? "strike" : ""}>
+              {item.description}
+            </span>
           </Box>
           <Box
             sx={{
@@ -70,7 +90,7 @@ export default function Item({ item, fetchItems }) {
               flexDirection: "row",
             }}
           >
-            <Edit onClick={() => setDrawer(!drawer)}>Edit</Edit>
+            <Edit onClick={() => setDrawer(!drawer)} />
 
             <Garbage onClick={() => setModal(true)} />
           </Box>
@@ -78,7 +98,7 @@ export default function Item({ item, fetchItems }) {
         <EditDrawer
           itemName={item.name}
           desc={item.description}
-          quant={4}
+          quant={item.quantity}
           open={drawer}
           handleDrawer={() => setDrawer(false)}
           fetchItems={fetchItems}

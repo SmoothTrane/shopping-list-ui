@@ -11,9 +11,19 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import RightMenu from "./icons/RightMenu";
 
-export default function AddDrawer({ open, handleDrawer, fetchItems }) {
+interface AddDrawerProps {
+  open: boolean;
+  handleDrawer: () => void;
+  fetchItems: () => void;
+}
+
+export default function AddDrawer({
+  open,
+  handleDrawer,
+  fetchItems,
+}: AddDrawerProps) {
   const [item, setItem] = useState({ name: "", description: "", quantity: 0 });
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item, [event.target.name]: event.target.value });
   };
 

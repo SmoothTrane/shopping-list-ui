@@ -15,6 +15,16 @@ import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
 import RightMenu from "./icons/RightMenu";
 
+interface EditDrawerProps {
+  open: boolean;
+  handleDrawer: () => void;
+  fetchItems: () => void;
+  itemName: string;
+  desc: string;
+  id: string;
+  isPurchased: boolean;
+  quant: number;
+}
 export default function EditDrawer({
   open,
   handleDrawer,
@@ -24,7 +34,7 @@ export default function EditDrawer({
   quant,
   isPurchased,
   id,
-}) {
+}: EditDrawerProps) {
   const [item, setItem] = useState({
     name: itemName,
     description: desc,
@@ -32,10 +42,10 @@ export default function EditDrawer({
     id: id,
     isPurchased: isPurchased,
   });
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item, [event.target.name]: event.target.value });
   };
-  const handleCheck = (event) => {
+  const handleCheck = (event: any) => {
     setItem({ ...item, isPurchased: event.target.checked });
   };
 
