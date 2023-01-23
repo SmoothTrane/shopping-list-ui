@@ -90,9 +90,9 @@ export default function Item({ item, fetchItems }: ItemProps) {
               flexDirection: "row",
             }}
           >
-            <Edit onClick={() => setDrawer(!drawer)} />
+            <Edit handleClick={() => setDrawer(!drawer)} />
 
-            <Garbage onClick={() => setModal(true)} />
+            <Garbage handleClick={() => setModal(true)} />
           </Box>
         </Box>
         <EditDrawer

@@ -1,6 +1,10 @@
-export default function RightMenu({ onClick }) {
+interface RightMenuProps {
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
+}
+
+export default function RightMenu({ handleClick }: RightMenuProps) {
   return (
-    <div style={{ cursor: "pointer" }} onClick={onClick}>
+    <div style={{ cursor: "pointer" }} onClick={handleClick}>
       <svg
         width="13"
         height="12"

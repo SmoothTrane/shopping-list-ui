@@ -1,6 +1,10 @@
-export default function Garbage({ onClick }) {
+interface GarbageProps {
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
+}
+
+export default function Garbage({ handleClick }: GarbageProps) {
   return (
-    <div style={{ cursor: "pointer" }} onClick={onClick}>
+    <div style={{ cursor: "pointer" }} onClick={handleClick}>
       <svg
         width="14"
         height="18"

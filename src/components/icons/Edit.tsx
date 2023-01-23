@@ -1,6 +1,9 @@
-export default function Edit({ onClick }) {
+interface EditProps {
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
+}
+export default function Edit({ handleClick }: EditProps) {
   return (
-    <div style={{ cursor: "pointer" }} onClick={onClick}>
+    <div style={{ cursor: "pointer" }} onClick={handleClick}>
       <svg
         width="19"
         height="18"
