@@ -54,7 +54,7 @@ export default function AddDrawer({
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Shopping List
               </Typography>
-              <RightMenu onClick={handleDrawer} />
+              <RightMenu handleClick={handleDrawer} />
             </Toolbar>
           </AppBar>
         </Box>
