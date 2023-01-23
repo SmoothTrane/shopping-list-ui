@@ -3,8 +3,9 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import axios from "axios";
 
-import Item from "../components/Item";
-import AddDrawer from "../components/AddDrawer";
+import Item from "../../components/Item";
+import AddDrawer from "../../components/AddDrawer";
+import EditDrawer from "@/components/EditDrawer";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Home() {
@@ -19,6 +20,9 @@ export default function Home() {
       .then((res) => {
         const items = res.data;
         setItems(items);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -29,6 +33,9 @@ export default function Home() {
         const items = res.data;
         setItems(items);
         setDrawer(false);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -87,6 +94,11 @@ export default function Home() {
                 </Button>
               </Box>
             </Box>
+            <AddDrawer
+              open={drawer}
+              handleDrawer={() => setDrawer(false)}
+              fetchItems={fetchItems}
+            />
           </Box>
         </>
       ) : (
@@ -109,14 +121,14 @@ export default function Home() {
             </Box>
 
             {mappedItems}
+            <AddDrawer
+              open={drawer}
+              handleDrawer={() => setDrawer(false)}
+              fetchItems={fetchItems}
+            />
           </Box>
         </>
-      )}{" "}
-      <AddDrawer
-        open={drawer}
-        handleDrawer={() => setDrawer(false)}
-        fetchItems={fetchItems}
-      />
+      )}
     </Box>
   );
 }
