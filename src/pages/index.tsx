@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 
 import Item from "../components/Item";
-import AddDrawer from "../components/AddDrawer";
+import AddDrawer from "../components/drawers/AddDrawer";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Home() {
@@ -14,15 +14,10 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(false);
-    axios
-      .get(`https://shopping-list-api-veritone.herokuapp.com/item`)
-      .then((res) => {
-        const items = res.data;
-        setItems(items);
-      });
+    fetchItemsAndCloseDrawer();
   }, []);
 
-  const fetchItems = () => {
+  const fetchItemsAndCloseDrawer = () => {
     axios
       .get(`https://shopping-list-api-veritone.herokuapp.com/item`)
       .then((res) => {
@@ -35,7 +30,7 @@ export default function Home() {
   const mappedItems = items.map((item) => {
     return (
       <>
-        <Item item={item} fetchItems={fetchItems} />
+        <Item item={item} fetchItems={fetchItemsAndCloseDrawer} />
       </>
     );
   });
@@ -112,11 +107,7 @@ export default function Home() {
           </Box>
         </>
       )}{" "}
-      <AddDrawer
-        open={drawer}
-        handleDrawer={() => setDrawer(false)}
-        fetchItems={fetchItems}
-      />
+      <AddDrawer open={drawer} handleDrawer={fetchItemsAndCloseDrawer} />
     </Box>
   );
 }

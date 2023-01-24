@@ -8,7 +8,7 @@ import axios from "axios";
 
 import Garbage from "./icons/Garbage";
 import Edit from "./icons/Edit";
-import EditDrawer from "./EditDrawer";
+import EditDrawer from "./drawers/EditDrawer";
 
 interface Item {
   name: string;

@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import RightMenu from "./icons/RightMenu";
+import RightMenu from "../icons/RightMenu";
 import Typography from "@mui/material/Typography";
 
 interface FormDrawerProps {
@@ -13,8 +12,6 @@ interface FormDrawerProps {
   description: string;
   children?: ReactNode;
   toggleDrawer: () => void;
-  action: string;
-  actionFunction: () => void;
 }
 
 export default function FormDrawer({
@@ -23,8 +20,6 @@ export default function FormDrawer({
   description,
   children,
   toggleDrawer,
-  action,
-  actionFunction,
 }: FormDrawerProps) {
   return (
     <Box>
@@ -49,8 +44,6 @@ export default function FormDrawer({
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
-            height: "100%",
             flexDirection: "column",
             p: 3,
             gap: 2,
@@ -60,15 +53,6 @@ export default function FormDrawer({
           <span>{description}</span>
 
           {children}
-
-          <Box sx={{ marginLeft: "auto", alignSelf: "flex-end" }}>
-            <Button className="black" onClick={toggleDrawer}>
-              Cancel
-            </Button>
-            <Button variant="contained" onClick={actionFunction}>
-              {action}
-            </Button>
-          </Box>
         </Box>
       </Drawer>
     </Box>
