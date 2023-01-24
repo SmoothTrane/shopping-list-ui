@@ -34,6 +34,7 @@ export default function Item({ item, fetchItems }: ItemProps) {
       )
       .then(function (response) {
         fetchItems();
+        setModal(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -65,20 +66,18 @@ export default function Item({ item, fetchItems }: ItemProps) {
         <Box sx={{ display: "flex", width: "100%", p: 3 }}>
           <Checkbox
             size="medium"
-            checked={selected}
-            onChange={handleCheck}
+            checked={item.isPurchased}
+            sx={{ cursor: "auto" }}
           ></Checkbox>
           <Box sx={{ display: "flex", width: "100%", flexDirection: "column" }}>
             <span
               className={
-                selected || item.isPurchased
-                  ? "strike highlight-text"
-                  : "highlight"
+                item.isPurchased ? "strike highlight-text" : "highlight"
               }
             >
               {item.name}
             </span>
-            <span className={selected || item.isPurchased ? "strike" : ""}>
+            <span className={item.isPurchased ? "strike" : ""}>
               {item.description}
             </span>
           </Box>

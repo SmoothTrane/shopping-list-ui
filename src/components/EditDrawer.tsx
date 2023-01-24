@@ -127,7 +127,7 @@ export default function EditDrawer({
             </TextField>
             <FormGroup>
               <FormControlLabel
-                control={<Checkbox defaultChecked />}
+                control={<Checkbox checked={item.isPurchased} />}
                 label="Purchased"
                 onChange={handleCheck}
               />
