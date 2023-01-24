@@ -6,8 +6,8 @@ import Modal from "@mui/material/Modal";
 
 import axios from "axios";
 
-import Garbage from "./icons/Garbage";
-import Edit from "./icons/Edit";
+import GarbageIcon from "./icons/GarbageIcon";
+import EditIcon from "./icons/EditIcon";
 import EditDrawer from "./drawers/EditDrawer";
 
 interface Item {
@@ -89,9 +89,9 @@ export default function Item({ item, fetchItems }: ItemProps) {
               flexDirection: "row",
             }}
           >
-            <Edit handleClick={() => setDrawer(!drawer)} />
+            <EditIcon handleClick={() => setDrawer(!drawer)} />
 
-            <Garbage handleClick={() => setModal(true)} />
+            <GarbageIcon handleClick={() => setModal(true)} />
           </Box>
         </Box>
         <EditDrawer
@@ -100,7 +100,6 @@ export default function Item({ item, fetchItems }: ItemProps) {
           quant={item.quantity}
           open={drawer}
           handleDrawer={() => setDrawer(false)}
-          fetchItems={fetchItems}
           id={item._id}
           isPurchased={item.isPurchased}
         />

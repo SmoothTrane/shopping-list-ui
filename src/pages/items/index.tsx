@@ -4,8 +4,7 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 
 import Item from "../../components/Item";
-import AddDrawer from "../../components/AddDrawer";
-import EditDrawer from "@/components/EditDrawer";
+import AddDrawer from "../../components/drawers/AddDrawer";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Home() {
