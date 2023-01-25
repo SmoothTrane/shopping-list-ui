@@ -33,9 +33,19 @@ export default function FormDrawer({
       >
         <Box sx={{}}>
           <AppBar position="static">
-            <Toolbar sx={{ backgroundColor: "#FAFAFA", color: "#5C6269" }}>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Shopping List
+            <Toolbar
+              sx={{
+                backgroundColor: "#FAFAFA",
+                color: "#5C6269",
+                fontFamily: "Dosis",
+              }}
+            >
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, fontFamily: "Dosis" }}
+              >
+                SHOPPING LIST
               </Typography>
               <RightMenuIcon handleClick={toggleDrawer} />
             </Toolbar>

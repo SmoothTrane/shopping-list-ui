@@ -64,7 +64,7 @@ export default function AddItemForm({ onCancel }: AddItemForm) {
             Cancel
           </Button>
           <Button variant="contained" onClick={addItem}>
-            Add Task
+            Save Item
           </Button>
         </Box>
       </FormControl>
