@@ -7,9 +7,9 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 interface AddItemForm {
-  onCancel: () => void;
+  handleDrawer: () => void;
 }
-export default function AddItemForm({ onCancel }: AddItemForm) {
+export default function AddItemForm({ handleDrawer }: AddItemForm) {
   const [item, setItem] = useState({ name: "", description: "", quantity: 0 });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item, [event.target.name]: event.target.value });
@@ -18,7 +18,7 @@ export default function AddItemForm({ onCancel }: AddItemForm) {
     axios
       .post(`https://shopping-list-api-veritone.herokuapp.com/item`, item)
       .then(function (response) {
-        onCancel();
+        handleDrawer();
       })
       .catch(function (error) {
         console.log(error);
@@ -60,7 +60,7 @@ export default function AddItemForm({ onCancel }: AddItemForm) {
           <MenuItem value={3}>3</MenuItem>
         </TextField>
         <Box sx={{ marginLeft: "auto", marginTop: "auto" }}>
-          <Button className="black" onClick={onCancel}>
+          <Button className="black" onClick={handleDrawer}>
             Cancel
           </Button>
           <Button variant="contained" onClick={addItem}>

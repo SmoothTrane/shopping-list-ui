@@ -14,7 +14,7 @@ export default function AddDrawer({ open, handleDrawer }: AddDrawerProps) {
       open={open}
       toggleDrawer={handleDrawer}
     >
-      <AddItemForm onCancel={handleDrawer} />
+      <AddItemForm handleDrawer={handleDrawer} />
     </FormDrawer>
   );
 }
