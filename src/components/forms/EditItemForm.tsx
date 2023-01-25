@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,30 +8,15 @@ import axios from "axios";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { ItemContext } from "../Item";
 
-interface EditItemProps {
-  onCancel: () => void;
-  itemName: string;
-  desc: string;
-  id: string;
-  isPurchased: boolean;
-  quant: number;
-}
-
-export default function EditItemForm({
-  onCancel,
-  itemName,
-  desc,
-  quant,
-  isPurchased,
-  id,
-}: EditItemProps) {
+export default function EditItemForm() {
   const [item, setItem] = useState({
-    name: itemName,
-    description: desc,
-    quantity: quant,
-    id: id,
-    isPurchased: isPurchased,
+    name: "",
+    description: "",
+    quantity: 0,
+    id: "",
+    isPurchased: false,
   });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item, [event.target.name]: event.target.value });
@@ -39,12 +24,22 @@ export default function EditItemForm({
   const handleCheck = (event: any) => {
     setItem({ ...item, isPurchased: event.target.checked });
   };
+  const itemContext = React.useContext(ItemContext);
 
+  useEffect(() => {
+    setItem({
+      name: itemContext.name,
+      description: itemContext.description,
+      quantity: itemContext.quantity,
+      id: itemContext._id,
+      isPurchased: itemContext.isPurchased,
+    });
+  }, []);
   const editItem = () => {
     axios
       .put(`https://shopping-list-api-veritone.herokuapp.com/item`, item)
       .then(function (response) {
-        onCancel();
+        itemContext.fetchItemsAndCloseDrawer();
       })
       .catch(function (error) {
         console.log(error);
@@ -92,7 +87,10 @@ export default function EditItemForm({
         />
       </FormGroup>{" "}
       <Box sx={{ marginLeft: "auto", marginTop: "auto" }}>
-        <Button className="black" onClick={onCancel}>
+        <Button
+          className="black"
+          onClick={itemContext.fetchItemsAndCloseDrawer}
+        >
           Cancel
         </Button>
         <Button variant="contained" onClick={editItem}>

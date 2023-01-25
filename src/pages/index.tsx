@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Head from "next/head";
 
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import axios from "axios";
 
-import Item from "../components/Item";
+import { Item } from "../components/Item";
 import AddDrawer from "../components/drawers/AddDrawer";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -16,23 +16,27 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(false);
-    fetchItemsAndCloseDrawer();
+    fetchItems();
   }, []);
 
-  const fetchItemsAndCloseDrawer = () => {
+  const fetchItems = () => {
     axios
       .get(`https://shopping-list-api-veritone.herokuapp.com/item`)
       .then((res) => {
         const items = res.data;
         setItems(items);
-        setDrawer(false);
       });
+  };
+
+  const handleDrawer = () => {
+    fetchItems();
+    setDrawer(!drawer);
   };
 
   const mappedItems = items.map((item) => {
     return (
       <>
-        <Item item={item} fetchItems={fetchItemsAndCloseDrawer} />
+        <Item item={item} fetchItems={fetchItems} />
       </>
     );
   });
@@ -118,7 +122,7 @@ export default function Home() {
             </Box>
           </>
         )}{" "}
-        <AddDrawer open={drawer} handleDrawer={fetchItemsAndCloseDrawer} />
+        <AddDrawer open={drawer} handleDrawer={handleDrawer} />
       </Box>
     </>
   );

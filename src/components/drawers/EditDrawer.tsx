@@ -1,24 +1,13 @@
+import React from "react";
+
 import FormDrawer from "./FormDrawer";
 import EditItemForm from "../forms/EditItemForm";
 
 interface EditDrawerProps {
   open: boolean;
   handleDrawer: () => void;
-  itemName: string;
-  desc: string;
-  id: string;
-  isPurchased: boolean;
-  quant: number;
 }
-export default function EditDrawer({
-  open,
-  handleDrawer,
-  itemName,
-  desc,
-  quant,
-  isPurchased,
-  id,
-}: EditDrawerProps) {
+export default function EditDrawer({ open, handleDrawer }: EditDrawerProps) {
   return (
     <FormDrawer
       title="Edit an Item"
@@ -26,14 +15,7 @@ export default function EditDrawer({
       open={open}
       toggleDrawer={handleDrawer}
     >
-      <EditItemForm
-        itemName={itemName}
-        desc={desc}
-        quant={quant}
-        isPurchased={isPurchased}
-        id={id}
-        onCancel={handleDrawer}
-      />
+      <EditItemForm />
     </FormDrawer>
   );
 }
