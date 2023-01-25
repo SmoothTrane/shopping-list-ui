@@ -15,8 +15,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
     fetchItems();
+    setLoading(false);
   }, []);
 
   const fetchItems = () => {
@@ -25,6 +25,9 @@ export default function Home() {
       .then((res) => {
         const items = res.data;
         setItems(items);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
