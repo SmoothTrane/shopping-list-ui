@@ -59,6 +59,7 @@ export default function Home() {
           width: "100%",
           height: "100vh",
           py: 3,
+          color: "#9CA8B4",
         }}
       >
         {loading ? (
@@ -74,7 +75,7 @@ export default function Home() {
                 height: "100vh",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center",
+                marginTop: "120px",
               }}
             >
               <Box

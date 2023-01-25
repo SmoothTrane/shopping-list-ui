@@ -59,12 +59,23 @@ export default function AddItemForm({ handleDrawer }: AddItemForm) {
           <MenuItem value={2}>2</MenuItem>
           <MenuItem value={3}>3</MenuItem>
         </TextField>
-        <Box sx={{ marginLeft: "auto", marginTop: "auto" }}>
+        <Box
+          sx={{
+            marginLeft: "auto",
+            marginTop: "auto",
+            gap: 2,
+            display: "flex",
+          }}
+        >
           <Button className="black" onClick={handleDrawer}>
             Cancel
           </Button>
-          <Button variant="contained" onClick={addItem}>
-            Save Item
+          <Button
+            className="veritone-button"
+            variant="contained"
+            onClick={addItem}
+          >
+            Add Task
           </Button>
         </Box>
       </FormControl>

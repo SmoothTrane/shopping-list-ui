@@ -147,12 +147,17 @@ export function Item({ item, fetchItems }: ItemProps) {
                 border: "none",
                 gap: 2,
                 display: "flex",
+                marginTop: "40px",
               }}
             >
               <Button className="black" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant="contained" onClick={removeItem}>
+              <Button
+                className="veritone-button"
+                variant="contained"
+                onClick={removeItem}
+              >
                 Delete
               </Button>
             </Box>

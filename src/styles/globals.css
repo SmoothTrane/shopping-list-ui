@@ -3,7 +3,7 @@ html {
   font-style: normal;
   font-weight: 200;
   font-size: 18px;
-  color: #87898c;
+  color: #87898c !important;
   line-height: 24px;
   height: 100%;
 }
@@ -67,10 +67,17 @@ path {
 
 button {
   font-family: "Nunito", sans-serif !important;
-  text-transform: lowercase;
+  text-transform: none !important;
 }
 
 .title {
   color: white;
   text-transform: uppercase;
+}
+
+.veritone-button {
+  background: #1871e8;
+  border-radius: 4px;
+  text-transform: none;
+  padding: 8px 15px;
 }

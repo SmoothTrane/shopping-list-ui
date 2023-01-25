@@ -46,7 +46,15 @@ export default function EditItemForm() {
       });
   };
   return (
-    <FormControl sx={{ width: "100%", height: "530px", gap: 2 }}>
+    <FormControl
+      sx={{
+        width: "100%",
+        height: "530px",
+        gap: 2,
+        color: "#87898c",
+        fontWeight: "100",
+      }}
+    >
       <TextField
         id="item-name"
         label="Item Name"
@@ -86,15 +94,21 @@ export default function EditItemForm() {
           onChange={handleCheck}
         />
       </FormGroup>{" "}
-      <Box sx={{ marginLeft: "auto", marginTop: "auto" }}>
+      <Box
+        sx={{ marginLeft: "auto", marginTop: "auto", display: "flex", gap: 2 }}
+      >
         <Button
           className="black"
           onClick={itemContext.fetchItemsAndCloseDrawer}
         >
           Cancel
         </Button>
-        <Button variant="contained" onClick={editItem}>
-          Edit Task
+        <Button
+          className="veritone-button"
+          variant="contained"
+          onClick={editItem}
+        >
+          Save Item
         </Button>
       </Box>
     </FormControl>

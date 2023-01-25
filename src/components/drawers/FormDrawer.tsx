@@ -57,6 +57,8 @@ export default function FormDrawer({
             flexDirection: "column",
             p: 3,
             gap: 2,
+            color: "#87898c",
+            fontWeight: "100",
           }}
         >
           <span className="highlight">{title}</span>
